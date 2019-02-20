@@ -9,6 +9,9 @@ bin_vec[1]="start"
 start() {
     echo "start"
     openresty -p ${work_dir} -c ${work_dir}/conf/nginx.conf
+    sleep 1
+    pid=`ps -ef | grep "openresty" | grep -v "grep" | awk '{print $2}'`
+    echo $pid > pid
 }
 bin_vec[2]="info"
 info() {
@@ -21,6 +24,9 @@ restart() {
     echo "restart"
     openresty -p ${work_dir} -s stop
     openresty -p ${work_dir} -c ${work_dir}/conf/nginx.conf
+    sleep 1
+    pid=`ps -ef | grep "openresty" | grep -v "grep" | awk '{print $2}'`
+    echo $pid > pid
 
 }
 bin_name=$1
