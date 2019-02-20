@@ -1,4 +1,4 @@
-work_dir=/Users/alf/git-file/openresty/work
+work_dir=`pwd`
 bin_vec=(``)
 bin_vec[0]="stop"
 stop() {
